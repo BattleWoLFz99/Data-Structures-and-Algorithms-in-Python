@@ -8,13 +8,14 @@
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
 
-        marker1 = head
-        marker2 = head
-        
-        while marker2 != None and marker2.next != None:
-            marker1 = marker1.next
-            marker2 = marker2.next.next
-            if marker2 == marker1:
+        slow = head
+        fast = head
+
+        while fast != None and fast.next != None:
+#       while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if fast == slow:
                 return True
         return False
         
