@@ -1,6 +1,7 @@
 def merge_lists(lst1, lst2):
     # list.insert(index, obj)
     # list.extend(iterable) - list, set, tuple, etc.
+    # I would like to call it two pointers method. It's been super useful in various questions. 
     ind1 = 0
     ind2 = 0
     while ind1 < len(lst1) and ind2 < len(lst2):
