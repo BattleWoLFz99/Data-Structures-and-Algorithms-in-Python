@@ -1,5 +1,6 @@
 def sortedSquaredArray(array):
     # return a new array of the same length
+    #sortedArray = [0] * len(A)
     sortedArray = [0 for _ in array]
     for i in range(len(array)):
 	    sortedArray[i] = array[i] * array[i]
