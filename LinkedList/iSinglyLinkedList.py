@@ -1,3 +1,6 @@
+#This implementation is merely for learning purposes
+#For leetcode questions, I recommend use dummy node
+
 class Node:
   def __init__(self, data):
     self.data = data
