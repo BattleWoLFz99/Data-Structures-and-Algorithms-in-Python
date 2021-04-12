@@ -1,5 +1,6 @@
-#This implementation is merely for learning purposes
-#For leetcode questions, I recommend use dummy node
+# This implementation is merely for learning purposes
+# For leetcode questions, I recommend use dummy node
+# eL203 is the easiest question that I used a dummy node
 
 class Node:
   def __init__(self, data):
