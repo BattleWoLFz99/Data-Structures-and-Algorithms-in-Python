@@ -14,5 +14,14 @@ Traditional college courses for understanding DS&A(though in Java):<br/>
 [Princeton Algorithms on Coursera](https://www.coursera.org/learn/algorithms-part1/home/info)<br/>
 <br/>
 <br/>
+i: Very basic operation/concept that you MUST understand
+e: Easy
+m: Medium
+h: Hard
+with L + %num%: Leetcode Number
+without L: May come from Educative, lintcode, AlgoExpert etc.
+<br/>
+<br/>
+Experience:<br/>
 04/09/2021 Microsoft Explore @Suzhou OA 5/6 <br/>
 
