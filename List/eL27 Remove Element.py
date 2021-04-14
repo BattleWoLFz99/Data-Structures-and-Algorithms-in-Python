@@ -19,3 +19,9 @@ class Solution:
             else:
                 item += 1
         return item
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        # write your code here
+        lst = [x for x in nums if x != val]
+        return lst
