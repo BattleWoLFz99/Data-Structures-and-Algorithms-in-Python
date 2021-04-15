@@ -19,7 +19,8 @@ e: Easy<br/>
 m: Medium<br/>
 h: Hard<br/>
 with L + %num%: Leetcode Number<br/>
-without L: May come from Educative.io Lintcode AlgoExpert etc.<br/>
+with l + %num%: Lintcode Number(In Chinese)<br/>
+without L or l: May come from Educative.io lgoExpert etc.<br/>
 <br/>
 <br/>
 Experience:<br/>
