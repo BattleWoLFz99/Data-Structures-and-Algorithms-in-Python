@@ -15,6 +15,7 @@ class Solution:
     def mergeTwoLists(self, l1, l2):
         # write your code here
         dummy = ListNode(0)
+        # If you curr.dummy and curr = l1, draw it!
         curr = dummy
         while l1 and l2:
             if l1.val < l2.val:

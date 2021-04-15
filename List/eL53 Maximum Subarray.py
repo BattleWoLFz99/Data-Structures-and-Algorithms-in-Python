@@ -30,3 +30,18 @@ class Solution:
             idx2 = idx1
         return maxsum
 
+# TLE Version 3, no need to create a list (I still prefer to use 2 pointers, for practice)
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        max_subarray = -math.inf
+        for i in range(len(nums)):
+            current_subarray = 0
+            for j in range(i, len(nums)):
+                current_subarray += nums[j]
+                max_subarray = max(max_subarray, current_subarray)
+        
+        return max_subarray
+
+# Version 4 DP: Have not learned that far...
+
+# Version 5 D&C: Have not learned that far...
