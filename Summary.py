@@ -4,6 +4,12 @@
     # Edge cases!!
     # If OA: READ THE PROBLEM TWICE!!
 
+# Sorting:
+    # Bubble Sort: Compare adjacent, Biggest one to the last firstly:
+    # i, j(0,len(lst)-i-1)
+    # Quick Sort: Store the location min = i, select the min
+    # Insertion Sort: Start from 1; store the key, j = i-1 all the way back to j>=0
+
 # Variable Convention
     # whatever
         firstNum = 0
@@ -18,8 +24,12 @@
         def isOpen()
 
     #LinkedList:
+        #Onsite: Define your own Node and LinkedList
+
         dummy_node = ListNode(0)  (sentinel)
         dummy_node.next = head  (lst.head_node)
+        return dummy_node.next
+
         prev = None
         curr_node = dummy_node.next
         next = None
