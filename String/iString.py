@@ -27,3 +27,25 @@
     # using list comprehension
     listToStr = ' '.join(map(str, s))
     print(listToStr)
+
+
+# 2 String removal
+str = "Engineering"
+ 
+print ("Original string: " + str)
+ 
+res_str = str.replace('e', '') 
+
+# removes all occurrences of 'e' 
+print ("The string after removal of character: " + res_str) 
+   
+# Removing 1st occurrence of e 
+ 
+res_str = str.replace('e', '', 1) 
+    
+print ("The string after removal of character: " + res_str) 
+
+If you want to remove the central character:
+
+midlen = len(oldstr)//2
+newstr = oldstr[:midlen] + oldstr[midlen+1:]
