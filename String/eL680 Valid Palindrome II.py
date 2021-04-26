@@ -23,10 +23,7 @@ class Solution:
         
         while left < right:
             if s[left] != s[right]:
-                if left + 2 > right:
-                    return True
-                else:
-                    return isPalindrome(s[left:right]) or isPalindrome(s[left+1:right+1])
+                return isPalindrome(s[left:right]) or isPalindrome(s[left+1:right+1])
             left += 1
             right -= 1
         
