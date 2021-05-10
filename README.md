@@ -24,5 +24,5 @@ without L or l: May come from Educative.io AlgoExpert etc.<br/>
 <br/>
 <br/>
 Experience:<br/>
-04/09/2021 Microsoft Explore @Suzhou OA 5/6 <br/>
+04/09/2021 Microsoft Explore @Suzhou OA 5/6 -- no onsite<br/>
 
