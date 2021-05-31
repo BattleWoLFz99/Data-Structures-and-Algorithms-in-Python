@@ -31,6 +31,8 @@ class Solution:
 
 
 #  From jiuzhang, faster than 45.68%, less than 99% (No new string is created)
+#  Well, I think the following solution can be used as follow-up, I don't really
+#  think merely write down this solution at the very beginning is a good idea
 class Solution:
     def validPalindrome(self, s: str) -> bool:
         if s is None:

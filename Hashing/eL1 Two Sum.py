@@ -15,9 +15,9 @@ class Solution:
         hash = {}
         for i in range(len(nums)):
             if target - nums[i] in hash:
-                return [hash[target - nums[i]], i]
+                return [i, hash[target - nums[i]]]
             hash[nums[i]] = i
-        return [-1, -1]
+#       return [-1, -1]
 
 
 
