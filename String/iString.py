@@ -16,6 +16,9 @@
     
     s = ['Geeks', 'for', 'Geeks']
     print(listToString(s)) 
+    
+    # or better:
+    return "".join(newLst)
 
     # 1c. Using list comprehension
     s = ['I', 'want', 4, 'apples', 'and', 18, 'bananas']
