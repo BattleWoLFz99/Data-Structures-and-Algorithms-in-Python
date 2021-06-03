@@ -14,3 +14,14 @@ def is_disjoint(list1, list2):
         if elem in s:
             return False
     return True
+
+# or
+def is_disjoint(list1, list2):
+    # Write your code here
+    s1 = set(list1)
+    s2 = set(list2)
+
+    if len(s1 & s2) == 0:
+        return True
+    else:
+        return False

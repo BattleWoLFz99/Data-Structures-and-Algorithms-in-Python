@@ -1,4 +1,4 @@
-# You may also find two pointers solutions in different folders.
+# You may also find hashing solutions in different folders.
 # Modified, return two values:
 
 class Solution:
