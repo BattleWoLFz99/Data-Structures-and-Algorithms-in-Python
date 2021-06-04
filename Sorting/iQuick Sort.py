@@ -9,15 +9,17 @@ class Solution:
         self.quickSort(A, 0, len(A) - 1)
 
     def quickSort(self, A, start, end):
-        if start >= end:
+        if start >= end:   # Only 1 num
             return
 
         left, right = start, end
         # key point 1: pivot is the value, not the index
+        # Don't A[start] or A[end], in case the array is already sorted. 
         pivot = A[(start + end) // 2]
 
         # key point 2: every time you compare left & right, it should be
         # left <= right not left < right
+        # Line 23 - 33: Partition
         while left <= right:
             while left <= right and A[left] < pivot:
                 left += 1
@@ -29,22 +31,27 @@ class Solution:
                 A[left], A[right] = A[right], A[left]
                 left += 1
                 right -= 1
-
+        
+        # then, %left% is on the right side, %right% is on the keft side.
         self.quickSort(A, start, right)
         self.quickSort(A, left, end)
 
 
 s = Solution()
-A = []
+A = [1, 23, 5, 63, 324, 5, 6, 1]
+s.sortIntegers(A)
 print(A)
 
 
 
 
+
+
 # or better, but random comes with cost:
+# For me, I will merely use the upper one, since it is easy to remember
+# Can't bring my Repo to interview, we have to consider Logic Complexity
 
 import random
-
 
 def choose_pivot(left, right):
     """
