@@ -6,6 +6,8 @@
     # Logicality
     # perhaps ask: “Would you like me to add comments to this?
 
+    # iBinarySearch.py line 15 is elif, then else
+
 # 1. Basic Operation:
     >>> 5 / 2
     2.5
