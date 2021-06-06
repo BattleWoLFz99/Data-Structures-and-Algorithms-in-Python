@@ -1,57 +1,57 @@
-class MyQueue:
+# Using List
+class MyQueue(object):
+
     def __init__(self):
-        self.queue_list = []
+        self.MAXSIZE = 4
+        self.queue = [0] * self.MAXSIZE
+        self.head, self.tail = 0, 0
 
-    def is_empty(self):
-        return self.size() == 0
+    def enqueue(self, item):
+        queue = self.queue 
 
-    def front(self):
-        if self.is_empty():
-            return None
-        return self.queue_list[0]
+        if self.tail == self.MAXSIZE:
+            return 
 
-    def back(self):
-        if self.is_empty():
-            return None
-        return self.queue_list[-1]
-
-    def size(self):
-        return len(self.queue_list)
-
-    def enqueue(self, value):
-        self.queue_list.append(value)
+        queue[self.tail] = item 
+        self.tail += 1 
 
     def dequeue(self):
-        if self.is_empty():
-            return None
-        front = self.front()
-        self.queue_list.remove(self.front())
-        return front
+        queue = self.queue
 
+        if self.head == self.tail:
+            return -1 
 
-queue = MyQueue()
+        item = queue[self.head]
+        self.head += 1 
+        return item 
 
-print("queue.enqueue(2);")
-queue.enqueue(2)
-print("queue.enqueue(4);")
-queue.enqueue(4)
-print("queue.enqueue(6);")
-queue.enqueue(6)
-print("queue.enqueue(8);")
-queue.enqueue(8)
-print("queue.enqueue(10);")
-queue.enqueue(10)
+class Node():
+    def __init__(self, _val):
+        self.next = None
+        self.val = _val
+# However, [^, ^, 3, 4], head = 2, tail = 4, so:
 
-print("Dequeue(): " + str(queue.dequeue()))
-print("Dequeue(): " + str(queue.dequeue()))
+# Using DLList
+class MyQueue(object):
 
-print("front(): " + str(queue.front()))
-print("back(): " + str(queue.back()))
+    def __init__(self):
+        # do some intialize if necessary
+        self.head, self.tail = None, None
 
-queue.enqueue(12)
-queue.enqueue(14)
+    # @param {int} item an integer
+    # @return nothing
+    def enqueue(self, item):
+        if self.head is None:
+            self.head = Node(item)
+            self.tail = self.head
+        else:
+            self.tail.next = Node(item)
+            self.tail = self.tail.next
 
-while queue.is_empty() is False:
-    print("Dequeue(): " + str(queue.dequeue()))
-
-print("is_empty(): " + str(queue.is_empty()))
+    # @return an integer
+    def dequeue(self):
+        if self.head is not None:
+            item = self.head.val
+            self.head = self.head.next
+            return item
+        return -1

@@ -13,7 +13,7 @@ class Solution:
             if nums[mid] < target:
                 start = mid
             elif nums[mid] == target:
-                end = mid
+                start = mid
             else: 
                 end = mid
 
@@ -25,7 +25,7 @@ class Solution:
         return -1
 
 s = Solution()
-result = s.binarySearch([2,2,3,4,5,6,8,13,17,18], 17)
+result = s.binarySearch([5,1,3],1)
 print(result)
 
 

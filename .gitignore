@@ -1,8 +1,10 @@
+.gitignore
 .idea/
  __pycache__/
  *.pyc
 
  iPython.py
  temp.py
+ temp2.py
  Summary.py
  

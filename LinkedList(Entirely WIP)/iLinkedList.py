@@ -1,5 +1,4 @@
 # 0. Define your own LinkedList!!!!
-from Node import Node
 class LinkedList:
     def __init__(self):
         self.head_node = None
@@ -10,12 +9,10 @@ class Node:
         self.next_element = None
 
 from LinkedList import LinkedList
-from Node import Node
 def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
 
-# 1. Dummy Node(Leetcode):
-    dummy_node = ListNode(0)
-    dummy_node.next = head
+# 1. Sentinel Node(Leetcode):
+    sentinel = ListNode(0, head)
     curr_node = dummy_node.next
     curr_node = dummy_node #or if .next.next
 
