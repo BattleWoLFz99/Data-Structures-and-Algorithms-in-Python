@@ -1,15 +1,3 @@
-# 0. Always start with asking questions:
-    # Edge cases
-    # Maybe some comments
-    # Code Quality
-    # Bug Free
-    # Logicality
-    # perhaps ask: “Would you like me to add comments to this?
-
-    # iBinarySearch.py line 15 is elif, then else
-    # NEVER DECLARING A VARIABLE IN IF STATEMENT, or better:
-    #     Global variables are always at the beginning
-
 # 1. Basic Operation:
     >>> 5 / 2
     2.5
@@ -71,4 +59,10 @@
         print("pass")
 
     if len(lst) != 0 & lst[1]:
-        print("index out of range")
+        print("Error: index out of range")
+
+lst = []
+while len(lst) != 0 and lst[1] == 5:
+    print("no pass")
+else:
+    print("pass")

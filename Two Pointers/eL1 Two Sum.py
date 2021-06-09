@@ -1,5 +1,8 @@
 # You may also find hashing solutions in different folders.
 # Modified, return two values:
+# The purpose I posted the solution here is, this solution will be our base
+# templates for various problems later on. (Next: /Two Pointers/
+# el 607 Two Sum III - Data structure design.py)
 
 class Solution:
     def twoSum(Self, numbers, target):

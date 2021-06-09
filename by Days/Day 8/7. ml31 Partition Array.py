@@ -26,4 +26,4 @@ class Solution:
 
 s = Solution()
 print(s.partitionArray([7,7,9,8,6,6,8,7,9,8,6,6],10))
-                                              ^^  No
+                                              ^^  No need to do anything

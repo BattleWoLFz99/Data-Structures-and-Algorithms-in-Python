@@ -1,14 +1,16 @@
-0. 
+0.  # return a value for the given key:
+    # Use .get() so that it will return None if not find.
+    dict = {'Name': 'Zabra', 'Age': 7}
+    dict.get('Age')
+    dict.get('Education', "Never")
 
-# return a value for the given key:
-# Use .get() so that it will return None if not find.
-dict = {'Name': 'Zabra', 'Age': 7}
-dict.get('Age')
-dict.get('Education', "Never")
+    Output:
+    Value : 7
+    Value : Never
 
-Output:
-Value : 7
-Value : Never
+# so: 数字出现次数+1；若这个数字第一次出现，则之前出现为0，执行完成后默认1
+    num_to_cnt_map[number] = num_to_cnt_map.get(number, 0) + 1
+
 
 # return a given key for the value(Not Recommended):
 def method1(dict, search_age):
@@ -22,6 +24,12 @@ print(dictionary.values())
 
 Output:
 dict_values([2, 3, 4])
+
+# return key
+for key in d.items()
+
+# return key, value
+for key, value in d.items():
 
 
 
@@ -72,8 +80,7 @@ pear
   
   
 from collections import defaultdict
-  
-  
+
 # Function to return a default
 # values for keys that is not
 # present
