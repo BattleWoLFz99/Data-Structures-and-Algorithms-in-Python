@@ -1,4 +1,5 @@
 # Data-Structures-and-Algorithms-in-Python
+PS: I am entirely redoing this repo, DO NOT check the content right now<br/>
 Mainly for leetcode<br/>
 My study resource:<br/>
 Python:<br/>
