@@ -14,7 +14,7 @@
 
 # return a given key for the value(Not Recommended):
 def method1(dict, search_age):
-    for name, age in dict.iteritems():
+    for name, age in dict.items():
         if age == search_age:
             return name
 
@@ -31,7 +31,11 @@ for key in d.items()
 # return key, value
 for key, value in d.items():
 
-
+# I don't see much use:
+>>> a_dict = {'color': 'blue', 'fruit': 'apple', 'pet': 'dog'}
+>>> d_items = a_dict.items()
+>>> d_items  # Here d_items is a view of items
+dict_items([('color', 'blue'), ('fruit', 'apple'), ('pet', 'dog')])
 
 
 1. 
