@@ -1,4 +1,5 @@
 # Data-Structures-and-Algorithms-in-Python
+PS: I am entirely redoing this repo, DO NOT check the content right now<br/>
 Mainly for leetcode<br/>
 My study resource:<br/>
 Python:<br/>
@@ -19,7 +20,7 @@ e: Easy<br/>
 m: Medium<br/>
 h: Hard<br/>
 with L + %num%: Leetcode Number<br/>
-with l + %num%: Lintcode Number (In Chinese but you will still understand)<br/>
+with l + %num%: Lintcode Number<br/>
 without L or l: May come from Educative.io AlgoExpert etc.<br/>
 <br/>
 <br/>
