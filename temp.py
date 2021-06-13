@@ -1,30 +1,34 @@
 class Solution:
     """
-    @param colors: A list of integer
-    @param k: An integer
-    @return: nothing
+    @param s: the string
+    @return: length of longest semi alternating substring
     """
-    def sortColors2(self, colors, k):
-        # write your code here
-        self.quickSort(colors, 0, len(colors) - 1)
+    def longestSemiAlternatingSubstring(self, s):
+        if len(s) < 3:
+            return len(s)
 
-        return colors
+        left, right = 0, 1
+        max_cnt, dup_cnt = 0, 1
+        dupped = False
 
-    def quickSort(self, colors, start, end):
-        if start == end:
-            return
+        while right < len(s) - 1:
+            if s[right] == s[right - 1]:
+                dup_cnt += 1
+                right += 1
+            else:
+                right += 1
+
+            if dup_cnt == 3:
+                print([left, right])
+                max_cnt = max(right - left, max_cnt)
+                left = right - 2
+                right = right - 1
+                dup_cnt = 1
+                dupped = True
+                print (max_cnt)
         
-        mid = (colors[start] + colors[end]) // 2
-        left, right = start, end
 
-        while left <= right:
-            while left <= right and colors[left] <= mid:
-                left += 1
-            while left <= right and colors[right] > mid:
-                right -= 1
-            if left <= right:
-                colors[left], colors[right] = colors[right], colors[left]
-                left += 1
-                right -= 1
-            
-        return colors
+        return max_cnt if dupped else len(s)
+
+s = Solution()
+print(s.longestSemiAlternatingSubstring("abaaaa"))
