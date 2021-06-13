@@ -11,7 +11,7 @@ class Solution:
         During the process, it's guaranteed start <= k <= end
         """
         if start == end:
-            return nums[k]
+            return nums[start]
             
         left, right = start, end
         pivot = nums[(start + end) // 2]
@@ -22,11 +22,12 @@ class Solution:
                 right -= 1
             if left <= right:
                 nums[left], nums[right] = nums[right], nums[left]
-                left, right = left + 1, right - 1
+                left += 1
+                right -= 1
                 
         if k <= right:
             return self.partition(nums, start, right, k)
-        else:
+        if k >= left:
             return self.partition(nums, left, end, k)
         
         return nums[k]

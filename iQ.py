@@ -1,4 +1,8 @@
+    #IF OR ELIF ......
+
 # 0. Always start with asking questions:
+
+
     # Edge cases
     # Maybe some comments
     # Code Quality
