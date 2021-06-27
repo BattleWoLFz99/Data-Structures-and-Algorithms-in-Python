@@ -1,0 +1,1 @@
+https://www.lintcode.com/problem/366/solution/18282

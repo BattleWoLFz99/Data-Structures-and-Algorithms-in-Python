@@ -1,30 +1,23 @@
 class Solution:
-    def median(self, nums):
+    """
+    @param nums: A set of numbers
+    @return: A list of lists
+    """
+    def subsets(self, nums):
+        results = []       
+        if nums is None:
+            return results
         if not nums:
-            return  
-            
-        return self.partition(nums, 0, len(nums) - 1, (len(nums) - 1) // 2)
+            return [results]
+
+        nums = sorted(nums)
+        self.dfs(nums, 0, [], results)
+        return results
         
-    def partition(self, nums, start, end, k):
-        if start == end:
-            return nums[start]
-            
-        left, right = start, end
-        pivot = nums[(start + end) // 2]
+    def dfs(self, nums, index, combination, results):
+        results.append(list(combination))
         
-        while left <= right:
-            while left <= right and nums[left] < pivot:
-                left += 1 
-            while left <= right and nums[right] > pivot:
-                right -= 1 
-            if left <= right:
-                nums[left], nums[right] = nums[right], nums[left]
-                left += 1 
-                right -= 1 
-                
-        if k <= right:
-            return self.partition(nums, start, right, k)
-        if k >= left:
-            return self.partition(nums, left, end, k)
-            
-        return nums[k]
+        for i in range(index, len(nums)):
+            combination.append(nums[i])
+            self.dfs(nums, i + 1, combination, results)
+            combination.pop()

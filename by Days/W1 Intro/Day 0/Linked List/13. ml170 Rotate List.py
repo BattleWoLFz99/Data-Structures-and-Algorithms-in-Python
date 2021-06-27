@@ -40,3 +40,37 @@ class Solution:
 
 
 # make it a Circular Linked List:
+
+"""
+Definition of ListNode
+class ListNode(object):
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+"""
+
+class Solution:
+    """
+    @param head: the List
+    @param k: rotate to the right k places
+    @return: the list after rotation
+    """
+    def rotateRight(self, head, k):
+        # write your code here
+        if head is None:
+            return head
+        lock = head
+        length = 1
+        while lock.next is not None:
+            lock = lock.next
+            length += 1
+
+        lock.next = head
+        k = k % length
+        for step in range(length-k):
+            lock = lock.next
+
+        head = lock.next
+        lock.next = None
+
+        return head

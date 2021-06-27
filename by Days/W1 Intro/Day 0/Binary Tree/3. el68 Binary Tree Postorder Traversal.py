@@ -27,16 +27,40 @@ class Solution:
 
 
 
+# Shorter:
+class Solution:
+    """
+    @param root: A Tree
+    @return: Postorder in ArrayList which contains node values.
+    """
+    def postorderTraversal(self, root):
+        # write your code here
+        return self.postorder(root)
+    
+    def postorder(self, root):
+        if not root:
+            return []
 
-#Version 1: Non-Recursion
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-"""
+        return self.postorder(root.left) + self.postorder(root.right) + [root.val]
 
+
+
+# Shorter:
+    def postorderTraversal(self, root):
+        if not root:
+            return []
+
+        return self.postorderTraversal(root.left) + \
+        self.postorderTraversal(root.right) + [root.val]
+
+
+
+# 1. 一样能往left走就先往left走
+# 2. 若一个node:
+#   没有right，输出
+#   有right，由于post-order是right走过了才能输出当前node，所以我们需要多纪录前一个node是谁
+#       前一个node是从right来的，right已经走过，输出
+#       right还没走过，把right和它所有的left加到stack，这轮不输出(continue)
 class Solution:
     """
     @param root: A Tree

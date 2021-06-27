@@ -68,3 +68,12 @@ while len(lst) != 0 and lst[1] == 5:
     print("no pass")
 else:
     print("pass")
+
+
+8. length of digits in an integer: len(str(123))   (very slow)
+Dump ver:
+    count=0
+    while(n>0):
+        count=count+1
+        n=n//10
+    print("The number of digits in the number are:",count)

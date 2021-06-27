@@ -1,4 +1,4 @@
-# Linked List
+# DummyNode
 
 """
 Definition of TreeNode:

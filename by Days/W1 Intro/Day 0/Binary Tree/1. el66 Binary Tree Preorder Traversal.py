@@ -1,4 +1,4 @@
-# Version 0: Recursion
+# Version 1: Recursion
 
 """ Definition of TreeNode: 
 class TreeNode: 
@@ -6,7 +6,6 @@ class TreeNode:
         this.val = val 
         this.left, this.right = None, None
 """
-
 
 class Solution:
     """ @param root: The root of binary tree. 
@@ -26,7 +25,19 @@ class Solution:
         self.traverse(root.right)
 
 
-#Version 1: Non-Recursion
+# Shorter:
+    def preorderTraversal(self, root):
+        return self.pre(root)
+    
+    def pre(self, root):
+        if not root:
+            return []
+
+        return [root.val] + self.pre(root.left) + self.pre(root.right)
+
+
+
+# DFS
 
 class Solution:
     """
@@ -47,3 +58,26 @@ class Solution:
                 stack.append(node.left)
                 
         return preorder
+
+
+# DQ
+
+class Solution:
+    """
+    @param root: The root of binary tree.
+    @return: Preorder in list which contains node values.
+    """
+    def preorderTraversal(self, root):
+        res = []
+        if root is None:
+            return []
+        
+        left = self.preorderTraversal(root.left)
+        right = self.preorderTraversal(root.right)
+        
+        res.append(root.val)
+        if left:
+            res.extend(left)
+        if right:
+            res.extend(right)
+        return res

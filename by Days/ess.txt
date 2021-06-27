@@ -1,0 +1,48 @@
+Standard Python Templates Library for Leetcode
+
+
+1. Pay extra attention to self.  , and .val
+    like, self.traverse(root.left) + [root.val] + self.traverse(root.right)
+
+
+2. 其实我感觉果然还是起手输入检测，会好一些，就算模板能处理空？
+
+
+3. 
+list.pop(index)
+
+>>> l = ['a', 'b', 'c', 'd']
+>>> l.pop(0)
+'a'
+>>> l
+['b', 'c', 'd']
+>>> 
+
+
+4. 
+float('inf')
+
+import sys
+max = sys.maxsize
+
+
+5. 
+    1. 二分 A[mid] < target 后面是start = mid
+
+    2. Position: First SEE-SE, Last SSE-ES
+
+    3. return closest (always bigg - small):
+        if abs(A[start] - target) < abs(target - A[end]):
+            return start
+        else:
+            return end
+
+        不加abs 树里找最近非递归会炸（target大于所有）
+
+
+6. 
+'_'.join(['welcome', 'to', 'stack', 'overflow'])
+'welcome_to_stack_overflow'
+:
+    if node.left is None and node.right is None:
+        result.append('->'.join(path))
