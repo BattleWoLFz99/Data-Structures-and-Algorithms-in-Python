@@ -16,8 +16,7 @@ class Solution:
         if head is None:
             return head
         
-        sentinel = ListNode(0)
-        sentinel.next = head
+        sentinel = ListNode(0, head)
         fast_node = sentinel
         slow_node = sentinel
         

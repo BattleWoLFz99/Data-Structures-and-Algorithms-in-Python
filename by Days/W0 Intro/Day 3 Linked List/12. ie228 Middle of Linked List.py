@@ -14,12 +14,12 @@ class Solution:
     def middleNode(self, head):
         if not head:
             return None
-        sentinel = ListNode(0, head)
-        # In case 1->2->null because you have not checked fast and fast.next
-        slow, fast = head, head.next
+
+        fast = head.next
+        slow = head
 
         while fast and fast.next:
-            slow = slow.next
             fast = fast.next.next
-        
+            slow = slow.next
+
         return slow

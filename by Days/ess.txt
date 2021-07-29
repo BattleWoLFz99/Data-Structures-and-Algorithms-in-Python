@@ -46,3 +46,8 @@ max = sys.maxsize
 :
     if node.left is None and node.right is None:
         result.append('->'.join(path))
+
+
+7.
+字符串 转 int，int(str)
+str里面有 负号 直接转了 （lintcode 241）

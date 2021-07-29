@@ -3,6 +3,8 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+# ncpc, hh
+
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
         prev = None
@@ -15,4 +17,5 @@ class Solution:
             prev = curr
             curr = next
         head = prev
+        
         return head

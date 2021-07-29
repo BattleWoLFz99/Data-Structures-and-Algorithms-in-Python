@@ -1,5 +1,5 @@
 # Version 0: Recursion
-# self.results, return self.results
+# self.traverse!!!!
 
 """
 Definition of TreeNode:
@@ -15,30 +15,30 @@ class Solution:
     @return: Inorder in ArrayList which contains node values.
     """
     def inorderTraversal(self, root):
-        self.results = []
-        self.traverse(root)
-        return self.results
-
-    def traverse(self, root):
         if root is None:
-            return
-        self.traverse(root.left)
-        self.results.append(root.val)
-        self.traverse(root.right)
+            return []
+
+        results = []
+        self.traverse(root, results)
+
+        return results
+
+    def traverse(self, root, results):
+        if root is None:
+            return 
+        
+        self.traverse(root.left, results)
+        results.append(root.val)
+        self.traverse(root.right, results)
 
 
 # Shorter:
-
     def inorderTraversal(self, root):
-        # write your code here
-        return self.inorder(root)
-    
-    def inorder(self, root):
-        if not root:
+        if root is None:
             return []
 
-        return self.inorder(root.left) + [root.val] + self.inorder(root.right)
-
+        return self.inorderTraversal(root.left) + [root.val] + \
+        self.inorderTraversal(root.right)
 
 
 #  通用的，能解决大部分题，来自于ml902，然而回不去了
@@ -73,7 +73,7 @@ class Solution:
 
 
 #  注意这里 [-1] 没有pop，带 else 可实现反向遍历(真要只选一个用怕不是是这个)
-#  删掉 101 102 (else 里的 while) TLE (因为 append pop 死循环了 while 逻辑一致)
+#  删掉 else 里的 while TLE (因为 append pop 死循环了 while 逻辑一致)
 
 class Solution:
     """

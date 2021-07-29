@@ -1,24 +1,13 @@
+# el241, "-123" to -123:
+# return int(str) 可以处理负号，正号也能处理的
+
+# el146, Input: str = "abC12", Output: "ABC12"
+# return str.upper()  无视integer
+
+# 说是这么说，还是照常写吧233
+
 # 1. List to String
-    # 1a. !!Iteration. Remember str(integer)
-    def listToString(s): 
-        str1 = ""
-        for ele in s: 
-            str1 += ele
-        return str1
-
-    s = ['Geeks', 'for', 'Geeks']
-    print(listToString(s)) 
-
-    # 1b. using join(). Won't work if the list contains both string and integer as its element. Need to convert it to string while adding to string.
-    def listToString(s):
-        str1 = " " 
-        return (str1.join(s))
-    
-    s = ['Geeks', 'for', 'Geeks']
-    print(listToString(s)) 
-    
-    # or better:
-    return "".join(newLst)
+#   return "".join(newLst)
 
     # 1c. Using list comprehension
     s = ['I', 'want', 4, 'apples', 'and', 18, 'bananas']
@@ -84,3 +73,12 @@ newstr = oldstr[:midlen] + oldstr[midlen+1:]
 #       .isalnum() == char.isditgit() or char.isalpha()
 
 # 5. Consider two pointers. O(n) space is usually a bad solution
+
+# 6. string = "I want you"
+# lst = list(string)
+# print(lst)
+# ['I', ' ', 'w', 'a', 'n', 't', ' ', 'y', 'o', 'u']
+
+# lst = string.split()
+# print(lst)
+# ['I', 'want', 'you']

@@ -14,35 +14,21 @@ class Solution:
     @return: Postorder in ArrayList which contains node values.
     """
     def postorderTraversal(self, root):
-        self.results = []
-        self.traverse(root)
-        return self.results
-
-    def traverse(self, root):
         if root is None:
-            return
-        self.traverse(root.left)
-        self.traverse(root.right)
-        self.results.append(root.val)
-
-
-
-# Shorter:
-class Solution:
-    """
-    @param root: A Tree
-    @return: Postorder in ArrayList which contains node values.
-    """
-    def postorderTraversal(self, root):
-        # write your code here
-        return self.postorder(root)
-    
-    def postorder(self, root):
-        if not root:
             return []
 
-        return self.postorder(root.left) + self.postorder(root.right) + [root.val]
+        results = []
+        self.traverse(root, results)
 
+        return results
+
+    def traverse(self, root, results):
+        if root is None:
+            return 
+        
+        self.traverse(root.left, results)
+        self.traverse(root.right, results)
+        results.append(root.val)
 
 
 # Shorter:
@@ -54,7 +40,7 @@ class Solution:
         self.postorderTraversal(root.right) + [root.val]
 
 
-
+# 不常考，先跳过：
 # 1. 一样能往left走就先往left走
 # 2. 若一个node:
 #   没有right，输出
