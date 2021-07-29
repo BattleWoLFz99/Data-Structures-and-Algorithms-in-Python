@@ -30,7 +30,7 @@ print(result)
 
 
 
-
+# Position: First SEE-SE, Last SSE-ES
 class Solution:
     # @param nums: The integer array
     # @param target: Target number to find

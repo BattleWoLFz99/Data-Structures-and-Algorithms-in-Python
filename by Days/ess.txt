@@ -1,5 +1,8 @@
 Standard Python Templates Library for Leetcode
 
+0. elif holy shit....
+    只要用到 elif ，第一次就没对过。。
+
 
 1. Pay extra attention to self.  , and .val
     like, self.traverse(root.left) + [root.val] + self.traverse(root.right)
@@ -48,6 +51,36 @@ max = sys.maxsize
         result.append('->'.join(path))
 
 
-7.
+7. 
+memo is dict
+if (key_x, key_y) in dict:
+if value in dict.values():
+
+
+8. 
+异常检测：
+if not a:
+    return -1
+
+a 如果等于 0 就出去了。。（废话，所以不要用 not 检测输入int。。）
+
+
+9. 
+Subxxx At Most K:
+len(dict) <= k
+
+
+10.
 字符串 转 int，int(str)
 str里面有 负号 直接转了 （lintcode 241）
+
+二刷问题：
+
+1.
+md写题前把东西问清楚啊卧槽。。或者写下来？总是比如非法输入写到return了再想起来问return个啥
+然后如果问清楚return list of list, 顺便什么地方写下来，应该就不会忘了append([ans1, ans2])了？
+
+2.
+细节记不清楚，two pointers写two sums找到了append后居然会忘记移动指针的
+这就是模板的一丝戒不掉的坏处，所有细节全部自动考虑好了。。（例如3 sums，前期去重自动满足后期去重）
+然后if elif, if 还是 while，缩进，都是需要考多刷才能不出bug的

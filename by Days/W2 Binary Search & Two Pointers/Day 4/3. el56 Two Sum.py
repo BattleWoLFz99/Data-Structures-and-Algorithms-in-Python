@@ -1,3 +1,5 @@
+# 假设只有一种答案，不需要去重
+
 class Solution:
     """
     @param numbers: An array of Integer

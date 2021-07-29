@@ -1,3 +1,22 @@
+# 更简单的记忆方法是只记 First 的简化版，然后 Last 推出来:
+# First 起手start，收手start, end 带等于
+# 就大概不会忘了带 elif 了吧草。。
+
+    def firstPosition(self, nums, start, end, target):
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if nums[mid] < target:
+                start = mid
+            else:
+                end = mid
+
+        if nums[start] == target:
+            return start
+        if nums[end] == target: 
+            return end
+        return -1
+
+
 # First SEE-SE, Last SSE-ES
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
@@ -43,6 +62,7 @@ class Solution:
 
 
 # or better, runtime complexity decreases, logic complexity increases:
+# So I absolutely would not be using it xD
 
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:

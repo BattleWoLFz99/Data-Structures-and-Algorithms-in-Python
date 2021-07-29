@@ -16,6 +16,9 @@
     # NEVER DECLARING A VARIABLE IN IF STATEMENT, or better:
     #     Global variables are always at the beginning
 
+    # Incoming data type
+    # What should we return if we could not find the solution
+
 # n Sum(BinarySearch):
     # Is the array sorted?
     # Does the array contain duplicated numbers?

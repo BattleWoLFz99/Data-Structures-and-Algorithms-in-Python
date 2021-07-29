@@ -1,4 +1,6 @@
-# You also need to know two pointers solution(TLE, merely for practice)
+# You also need to know two pointers solution
+# add O(1), find O(n)
+# Also, a lot of self.    ....
 
 class TwoSum:
     """
@@ -26,3 +28,15 @@ class TwoSum:
                 return True
 
         return False
+
+
+# 或这么写感觉更通俗，记得加括号不加你就无了
+
+    def find(self, value):
+        # write your code here
+        for num1 in self.num_to_cnt_map:
+            if value - num1 in self.num_to_cnt_map and \
+            (num1 != value - num1 or self.num_to_cnt_map[num1] > 1):
+                return True
+
+        return False 

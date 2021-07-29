@@ -1,7 +1,7 @@
-from queue import Queue
-q = Queue()
-count = 1000
+def print_n(n):
+    if n < 1:
+        return 
+    print_n(n - 1)
+    print(n)
 
-while count > 0:
-    q.dequeue()
-    print(count)
+print_n(5)

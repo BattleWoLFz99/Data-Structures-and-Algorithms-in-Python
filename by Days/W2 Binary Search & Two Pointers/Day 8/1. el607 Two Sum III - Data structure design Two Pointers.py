@@ -1,4 +1,4 @@
-# Not the most optimal, please also check /hashing/
+# Not the most optimal
 # Two pointers practice, also a good template
 # Keep in mind that:
 #   target - eachEle  takes O(n)
@@ -42,4 +42,4 @@ class TwoSum:
 
         return False
 
-# TLE. Go under /hashing/
+# TLE. Go to 2.

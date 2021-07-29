@@ -16,7 +16,7 @@ class Solution:
             else:
                 end = mid
                 
-        # pay extra attention here:
+        # pay extra attention here: (just use abs....)
         if target - results[start] < results[end] - target:
             return start
         else:
