@@ -82,7 +82,7 @@ class Solution:
     """
     def inorderTraversal(self, root):
         stack = []
-        result = []
+        results = []
 
         while root:
             stack.append(root)
@@ -90,7 +90,7 @@ class Solution:
 
         while stack:
             node = stack[-1]
-            result.append(node.val)
+            results.append(node.val)
             if node.right: 
                 node = node.right
                 while node:
@@ -100,7 +100,7 @@ class Solution:
                 node = stack.pop()
                 while stack and stack[-1].right == node:
                     node = stack.pop()
-        return result
+        return results
 
 
 
