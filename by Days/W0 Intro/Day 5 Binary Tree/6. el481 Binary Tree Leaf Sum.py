@@ -12,6 +12,27 @@ class Solution:
     @return: An integer
     """
     def leafSum(self, root):
+        if not root:
+            return 0
+
+        leaf_val = []
+        self.dfs(root, leaf_val)
+
+        return sum(leaf_val)
+
+    def dfs(self, node, leaf_val):
+        if not node:
+            return
+        
+        if node.left is None and node.right is None:
+            leaf_val.append(node.val)
+
+        self.dfs(node.left, leaf_val)
+        self.dfs(node.right, leaf_val)
+        
+
+# shorter:
+    def leafSum(self, root):
         if root is None:
             return 0
 
