@@ -1,3 +1,5 @@
+# Line 29 不能加 return，因为被夹在append pop之间了
+# Also for el480
 """
 Definition of TreeNode:
 class TreeNode:
@@ -13,7 +15,7 @@ class Solution:
         # Write your code here
         results = []
         path = []
-        self.dfs(root, path, results, 0,  target)
+        self.dfs(root, path, results, 0, target)
 
         return results
 
@@ -29,3 +31,36 @@ class Solution:
         self.dfs(root.left, path, results, length, target)
         self.dfs(root.right, path, results, length, target)
         path.pop()
+
+
+# From el480 Version 2.
+class Solution:
+    """
+    @param: root: the root of binary tree
+    @param: target: An integer
+    @return: all valid paths
+    """
+    def binaryTreePathSum(self, root, target):
+        # write your code here
+        if not root:
+            return []
+            
+        result = []
+        self.dfs(root, [root.val], result, target)
+        return result
+        
+    def dfs(self, node, path, result, target):
+        if not node.left and not node.right:
+            if sum(path) == target:
+                result.append(list(path))
+            return
+        
+        if node.left:
+            path.append(node.left.val)
+            self.dfs(node.left, path, result, target)
+            path.pop()
+        
+        if node.right:
+            path.append(node.right.val)
+            self.dfs(node.right, path, result, target)
+            path.pop()

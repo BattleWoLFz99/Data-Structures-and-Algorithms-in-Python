@@ -18,6 +18,7 @@ class Solution:
 
         leftDepth = self.minDepth(root.left)
         rightDepth = self.minDepth(root.right)
+        
         # 当左子树或右子树为空时，最小深度取决于另一颗子树
         if leftDepth == 0 or rightDepth == 0:
             return leftDepth + rightDepth + 1

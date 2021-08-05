@@ -1,4 +1,5 @@
-# Easy Ver.
+# Easy to understand Ver.
+# 90% 的情况不用去单独处理叶子节点，所以判断叶子节点可以删了
 
 """
 Definition of TreeNode:
@@ -7,79 +8,25 @@ class TreeNode:
         self.val = val
         self.left, self.right = None, None
 """
-
 class Solution:
     """
     @param root: The root of binary tree.
     @return: An integer
     """
     def maxDepth(self, root):
-        # write your code here
         if root is None:
             return 0
 
         if root.left is None and root.right is None:
             return 1
 
-        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
-
-# Traverse Ver.
-
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-"""
-
-class Solution:
-    """
-    @param root: The root of binary tree.
-    @return: An integer
-    """
-    def maxDepth(self, root):
-        # write your code here
-        self.depth = 0
-        self.traverse(root, 1)
-        return self.depth
-    
-    def traverse(self, root, curdepth):
-        if not root:
-            return
-        self.depth = max(self.depth, curdepth)
-        self.traverse(root.left, curdepth + 1)
-        self.traverse(root.right, curdepth + 1)
-
-
-
-
-
-
-
-# DFS ver.
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-"""
-class Solution:
-    """
-    @param root: The root of binary tree.
-    @return: An integer
-    """
-    def maxDepth(self, root):
-        if root is None:
-            return 0
         leftDepth = self.maxDepth(root.left)
         rightDepth = self.maxDepth(root.right)
+
         return max(leftDepth, rightDepth) + 1
 
 
 # Shorter ver.
-
 """
 Definition of TreeNode:
 class TreeNode:
@@ -95,4 +42,5 @@ class Solution:
     def maxDepth(self, root):
         if root is None:
             return 0
+
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
