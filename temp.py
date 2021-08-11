@@ -1,7 +1,8 @@
 def print_n(n):
-    if n < 1:
-        return 
-    print_n(n - 1)
-    print(n)
+    if n <= 0:
+        return
 
-print_n(5)
+    print(n)
+    print_n(n - 1)
+
+print_n(6)
