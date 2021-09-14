@@ -17,3 +17,5 @@ class Solution:
         y = self.fastPower(a, b, n - 1)
 
         return x * y % b
+
+# // 2 去 Day 31

@@ -19,6 +19,5 @@ class Solution:
                 cnt = 2
             # no need to check if never cnt == 3:
             res = max(res, right - left + 1)
-            
 
         return res

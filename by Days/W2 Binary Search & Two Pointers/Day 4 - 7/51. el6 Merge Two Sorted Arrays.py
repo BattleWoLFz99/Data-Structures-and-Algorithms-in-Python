@@ -1,4 +1,4 @@
-# Foundation of iMerge Sort.py. For the problem, you don't need index, use .append()
+# Foundation of iMerge Sort.py. For this problem only, you may not need index, use .append()
 
 class Solution:
     """

@@ -17,7 +17,7 @@
 
 # 3. Use of \
     return self.isPalindrome(s, left + 1, right) or\
-        self.isPalindrome(s, left, right - 1)
+           self.isPalindrome(s, left, right - 1)
 
 # 4. Always use 
     result = max(result, i)

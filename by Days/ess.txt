@@ -52,7 +52,8 @@ max = sys.maxsize
 
 
 7. 
-memo is dict
+memo is dict      <- WTF is memo is dict???
+if key in dict:
 if (key_x, key_y) in dict:
 if value in dict.values():
 
@@ -87,3 +88,17 @@ md写题前把东西问清楚啊卧槽。。或者写下来？总是比如非法
 
 3.
 不知道为什么（但是肯定得提前问清楚），异常检测不能直接 return，最后面最好加 [] or -1 or None
+
+4.
+list to dict:
+nums = [
+    (number, index)
+    for index, number in enumerate(numbers)
+]
+
+5. 互换节点，就这么写，不然容易写成环（lintcode MLE还Debug不出来）
+   治疗各种问题，记得dummy方便设置prev next是None
+    if v1_node and v2_node:
+        v1_prev.next = v2_node
+        v2_prev.next = v1_node
+        v1_node.next, v2_node.next = v2_node.next, v1_node.next
