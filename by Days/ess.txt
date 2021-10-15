@@ -75,6 +75,13 @@ len(dict) <= k
 字符串 转 int，int(str)
 str里面有 负号 直接转了 （lintcode 241）
 
+
+11.
+dict[key] = dict.get(dict[key], 0) + 1
+
+dict.setdefault(key, value) //putIfAbsent
+
+
 二刷问题：
 
 1.
