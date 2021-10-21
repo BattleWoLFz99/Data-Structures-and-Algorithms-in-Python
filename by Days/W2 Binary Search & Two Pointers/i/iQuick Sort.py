@@ -31,6 +31,6 @@ class Solution:
 
 
 s = Solution()
-A = [1, 23, 5, 63, 324, 5, 6, 1]
+A = [1, 3, 4, 2, 1, 3, 4]
 s.sortIntegers(A)
 print(A)

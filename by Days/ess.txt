@@ -77,7 +77,7 @@ str里面有 负号 直接转了 （lintcode 241）
 
 
 11.
-dict[key] = dict.get(dict[key], 0) + 1
+dict[key] = dict.get(key, 0) + 1
 
 dict.setdefault(key, value) //putIfAbsent
 
