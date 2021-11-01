@@ -35,6 +35,4 @@ class Solution:
                 if in_degree[next_course] == 0:
                     queue.append(next_course)
 
-        if course_taken == numCourses:
-            return order
-        return []
+        return order if course_taken == numCourses else []

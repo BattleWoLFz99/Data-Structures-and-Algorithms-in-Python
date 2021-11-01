@@ -1,4 +1,4 @@
-# 使用 Divider Conquer 版本的 DFS
+# 分治法：
 """
 Definition of TreeNode:
 class TreeNode:

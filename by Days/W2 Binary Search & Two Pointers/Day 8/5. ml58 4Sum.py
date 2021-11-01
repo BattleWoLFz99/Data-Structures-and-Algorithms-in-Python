@@ -28,13 +28,12 @@ class Solution:
 
         numbers.sort()
         length = len(numbers)
-
         for i in range(0, length - 3):
             if i > 0 and numbers[i] == numbers[i-1]:
                 continue
             for j in range(i + 1, length - 2):
                  # j != i + 1
-                if j != i + 1 and numbers[j] == numbers[j-1]:
+                if j > i + 1 and numbers[j] == numbers[j-1]:
                     continue
                 self.two_sum(numbers, i, j, target, results)
 

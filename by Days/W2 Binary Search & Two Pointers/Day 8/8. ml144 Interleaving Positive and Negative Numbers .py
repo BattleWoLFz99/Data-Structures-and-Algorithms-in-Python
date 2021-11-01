@@ -1,24 +1,26 @@
+# 先 partition，再交错
+
 class Solution:
     """
     @param: A: An integer array.
     @return: nothing
     """
     def rerange(self, A):
-        # write your code here
+        if not A:
+            return
+
         neg_cnt = self.partition(A)
         pos_cnt = len(A) - neg_cnt
-
         if neg_cnt > pos_cnt:
             left = 1
             right = len(A) - 1
-        elif neg_cnt < pos_cnt:
-            left = 0
+        elif neg_cnt == pos_cnt:
+            left = 1
             right = len(A) - 2
         else:
             left = 0
-            right = len(A) - 1
-            
-        return self.interleaving(A, left, right)
+            right = len(A) - 2
+        self.interval(A, left, right)
 
     def partition(self, A):
         left, right = 0, len(A) - 1
@@ -33,11 +35,9 @@ class Solution:
                 right -= 1
 
         return left
-        
-    def interleaving(self, A, left, right):
+
+    def interval(self, A, left, right):
         while left < right:
             A[left], A[right] = A[right], A[left]
             left += 2
             right -= 2
-
-        return A
