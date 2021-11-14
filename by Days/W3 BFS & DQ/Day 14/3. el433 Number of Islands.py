@@ -1,33 +1,30 @@
 # Try NOT to change the original input
 
-from collections import deque
-
 DIRECTIONS = [(1, 0), (0, -1), (-1, 0), (0, 1)]
 
 class Solution:
-    """
-    @param grid: a boolean 2D matrix
-    @return: an integer
-    """
     def numIslands(self, grid):
         if not grid or not grid[0]:
             return 0
 
-        islands = 0
         visited = set()
+        islands = 0
 
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j] and (i, j) not in visited:
-                    self.bfs(grid, i, j , visited)
-                    islands += 1
-        
+                if not grid[i][j] or (i, j) in visited:
+                    continue
+                self.bfs(grid, i, j, visited)
+                islands += 1
+
         return islands
 
     def bfs(self, grid, x, y, visited):
-        queue = deque([(x, y)])
+        # 固定搭配包一层 []
+        queue = collections.deque([(x, y)])
         visited.add((x, y))
         while queue:
+            # tuple 直接 pop
             x, y = queue.popleft()
             for delta_x, delta_y in DIRECTIONS:
                 next_x = x + delta_x
@@ -43,5 +40,6 @@ class Solution:
             return False
         if (x, y) in visited:
             return False
+        # 写传统 if 放这里，上面会list out of range
         return grid[x][y]
 

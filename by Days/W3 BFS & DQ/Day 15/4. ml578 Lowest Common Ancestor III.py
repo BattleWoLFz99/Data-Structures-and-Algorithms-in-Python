@@ -1,66 +1,4 @@
-# Based on ml88 Ver, a_exist b_exist:
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        this.val = val
-        this.left, this.right = None, None
-"""
-class Solution:
-    """
-    @param {TreeNode} root The root of the binary tree.
-    @param {TreeNode} A and {TreeNode} B two nodes
-    @return Return the LCA of the two nodes.
-    """ 
-    def lowestCommonAncestor3(self, root, A, B):
-        if not root:
-            return None
-
-        a_exist = False
-        b_exist = False
-
-        queue = collections.deque([root])
-        while queue:
-            for _ in range(len(queue)):
-                node = queue.popleft()
-                if node == A:
-                    a_exist = True
-                if node == B:
-                    b_exist = True
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
-
-        if a_exist and b_exist:
-            return self.lowestCommonAncestor(root, A, B)
-        return None
-
-
-
-    def lowestCommonAncestor(self, root, A, B):
-        if root is None:
-            return None
-        if root == A or root == B:
-            return root
-
-        left = self.lowestCommonAncestor(root.left, A, B)
-        right = self.lowestCommonAncestor(root.right, A, B)
-
-        if left and right:
-            return root
-
-        if left:
-            return left
-
-        if right:
-            return right
-
-        return None
-
-
-# Or better(won't be follow-up)
-# 二刷：好好学递归去啊，better你大爷
+# 分治就好好用递归？
 """
 Definition of TreeNode:
 class TreeNode:
@@ -103,3 +41,43 @@ class Solution:
             return a, b, right_node
 
         return a, b, None
+
+
+# non-Recursion:
+# Based on ml88 Ver, a_exist b_exist:
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        this.val = val
+        this.left, this.right = None, None
+"""
+class Solution:
+    """
+    @param {TreeNode} root The root of the binary tree.
+    @param {TreeNode} A and {TreeNode} B two nodes
+    @return Return the LCA of the two nodes.
+    """ 
+    def lowestCommonAncestor3(self, root, A, B):
+        if not root:
+            return None
+
+        a_exist = False
+        b_exist = False
+
+        queue = collections.deque([root])
+        while queue:
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                if node == A:
+                    a_exist = True
+                if node == B:
+                    b_exist = True
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+        if a_exist and b_exist:
+            return self.lowestCommonAncestor(root, A, B)
+        return None

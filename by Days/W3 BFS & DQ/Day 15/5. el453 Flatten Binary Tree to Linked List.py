@@ -21,7 +21,7 @@ class Solution:
         left_last = self.flatten_and_return_last_node(root.left)
         right_last = self.flatten_and_return_last_node(root.right)
 
-        if left_last:
+        if left_last is not None:
             left_last.right = root.right
             root.right = root.left
             root.left = None
