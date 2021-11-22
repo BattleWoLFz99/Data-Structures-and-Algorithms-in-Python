@@ -1,4 +1,5 @@
-# 标准组合类的DFS搜索问题解
+# 标准组合类的DFS搜索问题解。每一层代表选与不选
+# 所以二叉，必须走到叶子节点。所有叶子节点是结果，所以用长度判断返回
 
 class Solution:
     """
@@ -7,8 +8,6 @@ class Solution:
     """
     def subsets(self, nums):
         results = []
-        if nums is None:
-            return results
         if not nums:
             return [results]
 

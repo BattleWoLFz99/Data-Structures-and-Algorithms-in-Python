@@ -16,6 +16,40 @@
             return end
         return -1
 
+# 想找什么就放在第一个if：找最近的
+    def findUpperClosest(self, A, target):
+        # find the first number >= target in A
+        start, end = 0, len(A) - 1
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if A[mid] >= target:
+                end = mid
+            else:
+                start = mid
+        
+        if A[start] >= target:
+            return start
+        
+        if A[end] >= target:            
+            return end
+        
+        # 找不到的情况
+        return len(A)
+
+# 找最后，也就是
+    def lastPosition(self, nums, start, end, target):
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if nums[mid] <= target:
+                start = mid
+            else:
+                end = mid
+
+        if nums[end] == target: 
+            return end
+        if nums[start] == target:
+            return start
+        return -1
 
 # First SEE-SE, Last SSE-ES
 class Solution:

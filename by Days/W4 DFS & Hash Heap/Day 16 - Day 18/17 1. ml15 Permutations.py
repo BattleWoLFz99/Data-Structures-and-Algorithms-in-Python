@@ -1,19 +1,16 @@
 class Solution:
     """
-    @param nums: A list of Integers.
+    @param nums: A list of integers.
     @return: A list of permutations.
     """
-
     def permute(self, nums):
         # 如果数组为空直接返回空
-        if nums is None:
-            return []
-
         if not nums:
             return [[]]
 
         permutations = []
-        visited = [0] * len(nums)
+        # visited = [0] * len(nums)
+        visited = [0 for _ in range(len(nums))]
         self.dfs(nums, visited, [], permutations)
 
         return permutations
@@ -22,8 +19,6 @@ class Solution:
     def dfs(self, nums, visited, permutation, permutations):
         #  递归的出口: 找到一组排列，已到达边界条件
         if len(nums) == len(permutation):
-            # 因为地址传递，在最终回溯后current为空导致results中均为空列表
-            # 所以不能写成results.append(current)
             permutations.append(list(permutation))
             return
 
@@ -31,9 +26,10 @@ class Solution:
         # [] -> [1], [2], [3]
         # [1] -> [1, 2], [1, 3], [1, 4]...
         for i in range(len(nums)):
-            # i位置这个元素已经被用过
+            # i位置 的 元素 已经被用过
             if visited[i]:
                 continue
+
             # 继续递归
             permutation.append(nums[i])
             visited[i] = 1

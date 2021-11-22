@@ -1,3 +1,6 @@
+# 更通用的版本，每一层代表可选哪一个。
+# 可推广到非组合类型的代码之中，例如查排列
+
 class Solution:
     """
     @param nums: A set of numbers.
@@ -5,8 +8,6 @@ class Solution:
     """
     def subsetsWithDup(self, nums):
         results = []       
-        if nums is None:
-            return results
         if not nums:
             return [results]
 
@@ -18,14 +19,11 @@ class Solution:
         results.append(list(subset))
         
         for i in range(index, len(nums)):
-            # if i > 0 and xxx, 这里可以省略，但是不能省略
+            # if i > 0 and nums[i] == nums[i - 1] and i != index:
             if i > index and nums[i] == nums[i - 1]:
                 continue
-            # [1] => [1,2]
-            # 去寻找以 [1,2] 开头的所有子集
             subset.append(nums[i])
             self.dfs(nums, i + 1, subset, results)
-            # [1,2] =>[1]    backtracking, subset是一个内存地址, reference
             subset.pop()
 
 

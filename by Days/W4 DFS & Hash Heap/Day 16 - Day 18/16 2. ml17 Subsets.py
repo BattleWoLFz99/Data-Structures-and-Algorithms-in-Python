@@ -1,4 +1,5 @@
-# 更通用的版本，可推广到非组合类型的代码之中，例如查排列
+# 更通用的版本，每一层代表可选哪一个。
+# 可推广到非组合类型的代码之中，例如查排列
 
 class Solution:
     """
@@ -6,9 +7,7 @@ class Solution:
     @return: A list of lists
     """
     def subsets(self, nums):
-        results = []       
-        if nums is None:
-            return results
+        results = []
         if not nums:
             return [results]
 
@@ -19,7 +18,6 @@ class Solution:
     def dfs(self, nums, index, subset, results):
         results.append(list(subset))
         
-        # 多嘴一句，初始版本是这样：选了0，不能选1了:
         # if len(subset) > 0 and subset[-1] - 1 >= nums[i] 就 continue
         for i in range(index, len(nums)):
             # [1] => [1,2]
@@ -40,8 +38,6 @@ class Solution:
     """
     def subsets(self, nums):
         results = []       
-        if nums is None:
-            return results
         if not nums:
             return [results]
 

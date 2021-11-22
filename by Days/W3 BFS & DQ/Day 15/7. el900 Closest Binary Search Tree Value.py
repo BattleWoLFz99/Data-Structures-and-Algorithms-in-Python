@@ -66,3 +66,44 @@ class Solution:
             
         is_upper_closer = abs(upper.val - target) < abs(target - lower.val)
         return upper.val if is_upper_closer else lower.val
+
+
+# 删掉后还是捞回来了，挂后面纪念，欣赏下这位一刷时的旷世神作xswl：
+class Solution:
+    """
+    @param root: the given BST
+    @param target: the given target
+    @return: the value in the BST that is closest to the target
+    """
+    def closestValue(self, root, target):
+        if not root:
+            return []
+
+        stack = []
+        results = []
+
+        while root:
+            stack.append(root)
+            root = root.left
+
+        while stack:
+            node = stack.pop()
+            results.append(node.val)
+            if node.right:
+                node = node.right
+                while node:
+                    stack.append(node)
+                    node = node.left
+
+        start, end = 0, len(results) - 1
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if results[mid] < target:
+                start = mid
+            else:
+                end = mid
+
+        if target - results[start] < results[end] - target:
+            return results[start]
+        else:
+            return results[end]
