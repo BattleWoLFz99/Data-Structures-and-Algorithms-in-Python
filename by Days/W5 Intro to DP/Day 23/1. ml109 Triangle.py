@@ -6,12 +6,13 @@ class Solution:
     @return: An integer, minimum path sum
     """
     def minimumTotal(self, triangle):
-        if not triangle:
-            return []
-
         n = len(triangle)
+
+        # state
         dp = [[0] * (i + 1) for i in range(n)]
 
+        # init
+        # dp[0][0] = 0
         for i in range(n):
             dp[n - 1][i] = triangle[n - 1][i]
 

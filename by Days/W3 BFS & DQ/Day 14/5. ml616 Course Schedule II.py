@@ -6,6 +6,9 @@ class Solution:
     """
     def findOrder(self, numCourses, prerequisites):
         # 初始化可BFS的图
+        # graph 不能写成 [[]] * numCourses，会报错
+        # 这里写成 list 下标作为 course 访问
+        # dict 看 127 node_to_indegree = {x:0 for x in graph}
         graph = [[] for i in range(numCourses)]
         in_degree = [0] * numCourses
         # 1. 建图(统计每个点的入度)

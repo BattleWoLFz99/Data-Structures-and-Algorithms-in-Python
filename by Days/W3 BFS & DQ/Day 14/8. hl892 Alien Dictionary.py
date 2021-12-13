@@ -34,6 +34,7 @@ class Solution:
                 if words[i][j] != words[i + 1][j]:
                     graph[words[i][j]].add(words[i + 1][j])
                     break
+                # 代表来到了最后一层，并且前面都一样没有break出去： abc ab
                 if j == min(len(words[i]), len(words[i + 1])) - 1:
                     if len(words[i]) > len(words[i + 1]):
                         return None

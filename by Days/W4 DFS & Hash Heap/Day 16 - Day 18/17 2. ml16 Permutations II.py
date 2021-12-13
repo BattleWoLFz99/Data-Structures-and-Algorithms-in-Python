@@ -10,8 +10,8 @@ class Solution:
 
         nums.sort()
         permutations = []
-        # visited = [0] * len(nums)
-        visited = [0 for _ in range(len(nums))]
+        # visited = [0 for _ in range(len(nums))]
+        visited = [False] * len(nums)
         self.dfs(nums, visited, [], permutations)
 
         return permutations
@@ -30,7 +30,7 @@ class Solution:
                 continue
 
             permutation.append(nums[i])
-            visited[i] = 1
+            visited[i] = True
             self.dfs(nums, visited, permutation, permutations)
-            visited[i] = 0
+            visited[i] = False
             permutation.pop()
