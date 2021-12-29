@@ -1,7 +1,6 @@
 # 更简单的记忆方法是只记 First 的简化版，然后 Last 推出来:
 # First 起手start，收手start, end 带等于
 # 就大概不会忘了带 elif 了吧草。。
-
     def firstPosition(self, nums, start, end, target):
         while start + 1 < end:
             mid = (start + end) // 2
@@ -16,25 +15,33 @@
             return end
         return -1
 
-# 想找什么就放在第一个if：找最近的
-    def findUpperClosest(self, A, target):
-        # find the first number >= target in A
-        start, end = 0, len(A) - 1
+# 所以写到21年底才知道怎么写二分？
+# 想找什么就放在第一个if
+# 找 first 例如要 min 往前走 等于给了 end，找 last 例如要 max 往后走 等于给了 start
+    def woodCut(self, L, k):
+        if not L:
+            return 0
+
+        start, end = 1, min(max(L), sum(L) // k)
+        if end < 1:
+            return 0
         while start + 1 < end:
             mid = (start + end) // 2
-            if A[mid] >= target:
-                end = mid
-            else:
+            if self.is_valid(L, k, mid):
                 start = mid
-        
-        if A[start] >= target:
-            return start
-        
-        if A[end] >= target:            
+            else:
+                end = mid
+        if self.is_valid(L, k, end):
             return end
-        
-        # 找不到的情况
-        return len(A)
+        if self.is_valid(L, k, start):
+            return start
+        return 0
+
+    def is_valid(self, L, k, length):
+        pieces = 0
+        for i in range(len(L)):
+            pieces += L[i] // length
+        return pieces >= k
 
 # 找最后，也就是
     def lastPosition(self, nums, start, end, target):
