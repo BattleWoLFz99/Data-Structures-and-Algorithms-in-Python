@@ -1,3 +1,4 @@
+# 好好先学233 干嘛硬要自己乱刷自己发明模板浪费时间，不如打CSGO
 class Solution:
     """
     @param s: A string
