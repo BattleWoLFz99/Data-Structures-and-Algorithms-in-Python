@@ -1,14 +1,48 @@
-from collections import deque
+# 看上去更标准且偷懒省略了 {} 的做法
+class Solution:
+    def serialize(self, root):
+        if root is None:
+            return ""
+            
+        queue = collections.deque([root])
+        bfs_order = []
+        
+        while queue:
+            node = queue.popleft()
+            bfs_order.append(str(node.val) if node else "#")
+            if node:
+                queue.append(node.left)
+                queue.append(node.right)
+                
+        return ','.join(bfs_order)
 
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-"""
+    def deserialize(self, data):
+        if not data:
+            return None
+        
+        vals = data.split(',')
+        root = TreeNode(int(vals[0])) 
+        queue = [root]   # 二叉树的原型
+        isLeftChild = True
+        index = 0
+        
+        for val in vals[1:]:   # 第一位已经交给root了
+            if val is not "#":
+                node = TreeNode(int(val))
+                if isLeftChild:
+                    queue[index].left = node
+                else: 
+                    queue[index].right = node
+                queue.append(node)
+            
+            if not isLeftChild:
+                index += 1
+            isLeftChild = not isLeftChild
+            
+        return root
 
 
+# 快慢：
 class Solution:
     """
     @param root: An object of TreeNode, denote the root of the binary tree.
@@ -21,7 +55,7 @@ class Solution:
             return ""
             
         # use bfs to serialize the tree
-        queue = deque([root])
+        queue = collections.deque([root])
         bfs_order = []
         while queue:
             node = queue.popleft()

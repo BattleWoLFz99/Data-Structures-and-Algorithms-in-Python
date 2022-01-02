@@ -1,7 +1,4 @@
 # Unified BFS Ver
-
-from collections import deque
-
 """
 Definition of TreeNode:
 class TreeNode:
@@ -19,7 +16,7 @@ class Solution:
         if root is None:
             return []
             
-        queue = deque([root])
+        queue = collections.deque([root])
         result = []
         while queue:
             level = []

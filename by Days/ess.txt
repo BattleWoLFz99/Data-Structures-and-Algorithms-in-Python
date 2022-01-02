@@ -109,3 +109,8 @@ nums = [
         v1_prev.next = v2_node
         v2_prev.next = v1_node
         v1_node.next, v2_node.next = v2_node.next, v1_node.next
+
+6. 被极度叮嘱一定一定不要在结果集上去重然而不听不听就是不听的写法：
+if tuple([numbers[i], numbers[start], numbers[end]]) not in hashing:
+    hashing.add(tuple([numbers[i], numbers[start], numbers[end]]))
+    results.append([numbers[i], numbers[start], numbers[end]])

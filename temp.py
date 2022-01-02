@@ -1,16 +1,33 @@
 class Solution:
-    """
-    @param a: A number
-    @return: Returns the maximum number after insertion
-    """
-    def get_prefix_sum(self, arr):
-        n = len(arr)
-        prefix_sum = [0] * (len(arr) + 1)
-        prefix_sum[0] = 0
+    def moveZeroes(self, nums):
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        if not nums:
+            return
+        
+        n, count = len(nums), 0
         for i in range(n):
-            prefix_sum[i + 1] = prefix_sum[i] + arr[i]
-            
-        return prefix_sum
+            if nums[i] == 0:
+                count += 1
+                
+        j = 0
+        for i in range(n):
+            j = max(j, i + 1)
+            while j < n and nums[j] == 0:
+                j += 1
+            if j >= n:
+                break
+            else:
+                nums[i] = nums[j]
+                j += 1
+        
+        k = n - 1
+        while count > 0:
+            nums[k] = 0
+            k -= 1
+            count -= 1
 
+        print (nums)
 s = Solution()
-print(s.get_prefix_sum([1,2,3,4,5]))
+s.moveZeroes([1])

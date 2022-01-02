@@ -1,4 +1,4 @@
-# More abstract:
+# N tree
 class Solution:
     """
     @param nums: A set of numbers
@@ -21,6 +21,7 @@ class Solution:
         return queue
 
 
+# take or not take
 class Solution:
     """
     @param nums: A set of numbers
