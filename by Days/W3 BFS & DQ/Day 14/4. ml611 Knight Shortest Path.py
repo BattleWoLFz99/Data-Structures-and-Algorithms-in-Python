@@ -21,6 +21,11 @@ class Solution:
     """
     def shortestPath(self, grid, source, destination):
         if not grid or not grid[0]:
+            return -1
+        if grid[destination.x][destination.y]:
+            return -1
+        # 不这么写双向会错
+        if (source.x, source.y) == (destination.x, destination.y):
             return 0
 
         queue = collections.deque([(source.x, source.y)])
@@ -42,9 +47,10 @@ class Solution:
         return -1
 
     def is_valid(self, grid, x, y, dis_to_src_map):
-        n, m = len(grid), len(grid[0])
-        if not (0 <= x < n and 0 <= y < m):
+        if not (0 <= x < len(grid) and 0 <= y < len(grid[0])):
             return False
-        if (x, y) in dis_to_src_map:
+        if grid[x][y] == 1:
             return False
-        return not grid[x][y]
+        if (x, y) in visited:
+            return False
+        return True
