@@ -33,6 +33,7 @@ class Solution:
                     if 0 <= x < n and 0 <= y < m:
                         dp[i][j % 3] = min(dp[i][j % 3], dp[x][y % 3] + 1)
 
+        # answer
         if dp[n - 1][(m - 1) % 3] == float('inf'):
             return -1
         return dp[n - 1][(m - 1) % 3]

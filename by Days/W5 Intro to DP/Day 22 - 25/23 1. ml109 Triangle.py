@@ -56,7 +56,7 @@ class Solution:
         return min(dp[n - 1])
 
 
-# Top down less code:
+# Top down less code: (滚动数组基于此)
 class Solution:
     """
     @param triangle: a list of lists of integers
