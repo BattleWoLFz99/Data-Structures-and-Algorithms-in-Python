@@ -1,5 +1,5 @@
 class Solution:
-    def reversePairs(self, nums):
+    def reversePairs(self, nums: List[int]) -> int:
         if not nums:
             return 0
 
@@ -19,18 +19,10 @@ class Solution:
     
     def merge(self, nums, temp, start, mid, end):
         left, right = start, mid + 1
-        count = 0
-
-        
-        while left <= mid and right <= end:
-            if nums[left] <= 2 * nums[right]:
-                left += 1
-            else:
-                right += 1
-                count = mid - left + 1
-
-        left, right = start, mid + 1
         index = start
+        
+        count = self.count_reverse_pairs(nums, left, right, mid, end)
+        
         while left <= mid and right <= end:
             if nums[left] < nums[right]:
                 temp[index] = nums[left]
@@ -52,7 +44,13 @@ class Solution:
             nums[i] = temp[i]
         
         return count
-
-
-s = Solution()
-print(s.reversePairs([5,4,3,2,1]))
+    
+    def count_reverse_pairs(self, nums, left, right, mid, end):
+        count = 0
+        while left <= mid and right <= end:
+            if nums[left] <= 2 * nums[right]:
+                left += 1
+            else:
+                right += 1
+                count += mid - left + 1
+        return count

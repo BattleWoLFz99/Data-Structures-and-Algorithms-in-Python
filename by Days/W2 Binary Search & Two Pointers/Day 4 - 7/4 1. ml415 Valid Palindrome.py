@@ -3,6 +3,7 @@
 # s.isdigit()     s.isalpha()
 # for c in s:
 
+# 三刷：用 left right 啊卧槽？然后需要注意的是别忘了动双指针在判断之后
 class Solution:
     # @param {string} s A string
     # @return {boolean} Whether the string is a valid palindrome

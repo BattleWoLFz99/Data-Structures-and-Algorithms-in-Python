@@ -1,3 +1,4 @@
+# left >= right 就是 Palindrome 了
 class Solution:
     """
     @param s: a string
