@@ -5,39 +5,33 @@ class Solution:
     @param: A: An integer array.
     @return: nothing
     """
-    def rerange(self, A):
-        if not A:
-            return
-
-        neg_cnt = self.partition(A)
-        pos_cnt = len(A) - neg_cnt
-        if neg_cnt > pos_cnt:
-            left = 1
-            right = len(A) - 1
-        elif neg_cnt == pos_cnt:
-            left = 1
-            right = len(A) - 2
+    def rerange(self, nums):
+        if not nums:
+            return []
+        
+        neg_count = self.partition(nums)
+        pos_count = len(nums) - neg_count
+        print(neg_count, pos_count)
+        if neg_count > pos_count:
+            self.switch(nums, 1, len(nums) - 1)
+        elif neg_count == pos_count:
+            self.switch(nums, 1, len(nums) - 2)
         else:
-            left = 0
-            right = len(A) - 2
-        self.interval(A, left, right)
-
-    def partition(self, A):
-        left, right = 0, len(A) - 1
+            self.switch(nums, 0, len(nums) - 2)
+        
+    def partition(self, nums):
+        left, right = 0, len(nums) - 1
         while left <= right:
-            while left <= right and A[left] < 0:
+            while left <= right and nums[left] < 0:
                 left += 1
-            while left <= right and A[right] > 0:
+            while left <= right and nums[right] > 0:
                 right -= 1
             if left <= right:
-                A[left], A[right] = A[right], A[left]
-                left += 1
-                right -= 1
-
-        return left
-
-    def interval(self, A, left, right):
+                nums[left], nums[right] = nums[right], nums[left]
+        return right + 1
+                
+    def switch(self, nums, left, right):
         while left < right:
-            A[left], A[right] = A[right], A[left]
+            nums[left], nums[right] = nums[right], nums[left]
             left += 2
-            right -= 2
+            right -=2

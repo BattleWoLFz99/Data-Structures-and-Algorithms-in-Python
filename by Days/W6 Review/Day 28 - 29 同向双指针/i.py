@@ -127,3 +127,35 @@ class Solution:
             counter[s[i]] -= 1
             max_freq = max(counter.values())
         return answer
+
+
+# https://leetcode.com/problems/partition-array-into-disjoint-intervals/
+# 思路：模板起手，发现只能写 >= 那就不能 i == j 必须 j = i + 1 了
+# 然后又发现一旦不搭配 i 要到飞到 j 位置所以 i < j continue 同时更新最大值
+# j 出去了可以 break
+class Solution:
+    def partitionDisjoint(self, nums: List[int]) -> int:
+        if not nums:
+            return
+        
+        n = len(nums)
+        j, left_max, curr_max = 0, nums[0], nums[0]
+        for i in range(n):
+            # 第三步想 i 要不要飞到 j 还是 一步步走，要飞就必须带 max
+            if i < j:
+                continue
+            j = max(i + 1, j)
+                            # 第一步肯定先想这里怎么写
+            while j < n and nums[j] >= left_max:
+                if nums[j] > curr_max:
+                    curr_max = nums[j]
+                j += 1
+            # 第二步肯定想两个退出条件
+            if j >= n:
+                break  
+            if curr_max > left_max:
+                left_max = curr_max
+        
+        # 完了在考虑 return i + 1 if i + 1 <= n else i 笑死。。从来没有这样过
+        # 同向双指针是最容易出错的多刷题目吧
+        return i + 1

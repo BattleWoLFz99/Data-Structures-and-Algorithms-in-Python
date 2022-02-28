@@ -51,4 +51,3 @@ class Solution:
             A[i] = temp[i]
 
         return count
-    

@@ -13,6 +13,7 @@ class Solution:
             mid = (start + end) // 2
             # mid + 1 保证不会越界
             # 因为 start 和 end 是 start + 1 < end
+            # 找到第一个，当然也可以写成找到最后一个
             if nums[mid] > nums[mid + 1]:
                 end = mid
             else:

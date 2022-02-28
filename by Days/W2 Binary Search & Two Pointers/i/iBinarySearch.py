@@ -30,7 +30,7 @@ print(result)
 
 
 
-
+# 只有不理解才在这里背SEESE，去看mL34
 # Position: First SEE-SE, Last SSE-ES
 class Solution:
     # @param nums: The integer array
