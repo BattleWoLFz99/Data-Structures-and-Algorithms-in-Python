@@ -19,7 +19,6 @@ for i in range(n):
 
 # 在 j 停下来的时候，j 是第一个不满足的。不行自己去画。。
 # https://leetcode.com/problems/minimum-time-to-make-rope-colorful/
-
     j, answer = 0, 0
     n = len(colors)
     for i in range(n):
