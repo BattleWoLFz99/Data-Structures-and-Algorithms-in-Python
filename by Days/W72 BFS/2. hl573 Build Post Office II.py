@@ -55,49 +55,49 @@ class Solution:
                         return float('inf')
                     distance_sum += distance[(x, y)]
         return distance_sum
+# But it is really Common Sense: Get house_count first, then see if ==
+# To save some space, not gonna paste again.
 
 
 # if EMPTY >> HOUSE:
-DIRECTIONS = ((-1, 0), (1, 0), (0, 1), (0, -1))
+DIRECTIONS = ((-1, 0), (0, -1), (1, 0), (0, 1))
+
 class GridType:
-    EMPTY = 0
-    HOUSE = 1
     WALL = 2
+    HOUSE = 1
+    EMPTY = 0
+
 
 class Solution:
     """
     @param grid: a 2D grid
     @return: An integer
     """
-    def shortestDistance(self, grid):
+    def shortest_distance(self, grid: List[List[int]]) -> int:
         if not grid or not grid[0]:
             return -1
 
-        distance_sum = {}
-        reachable_count = {}
-        houses = 0
-        n, m = len(grid), len(grid[0])
-
-        for i in range(n):
-            for j in range(m):
+        distance_sum, reachable_count, houses_count = {}, {}, 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
                 if grid[i][j] == GridType.HOUSE:
                     self.bfs(grid, i, j, distance_sum, reachable_count)
-                    houses += 1
+                    houses_count += 1
 
-        min_dist = float('inf')
-        for i in range(n):
-            for j in range(m):
-                if (i, j) not in reachable_count or \
-                    reachable_count[(i, j)] != houses:
+        min_distance = float('inf')
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if (i, j) not in reachable_count:
                     continue
-                min_dist = min(min_dist, distance_sum[(i, j)])
+                if reachable_count[(i, j)] != houses_count:
+                    continue
+                min_distance = min(min_distance, distance_sum[(i, j)])
 
-        return min_dist if min_dist != float('inf') else -1
+        return min_distance if min_distance != float('inf') else -1
 
     def bfs(self, grid, i, j, distance_sum, reachable_count):
-        # distance_sum = sum of total distance from a place to every houses
-        distance = {(i, j): 0}
         queue = collections.deque([(i, j)])
+        distance = {(i, j): 0}
         while queue:
             x, y = queue.popleft()
             for dx, dy in DIRECTIONS:
@@ -106,16 +106,17 @@ class Solution:
                     continue
                 if not self.is_valid(grid, next_x, next_y):
                     continue
-                queue.append((next_x, next_y))
                 distance[(next_x, next_y)] = distance[(x, y)] + 1
-                distance_sum[(next_x, next_y)] = \
-                    distance_sum.get((next_x, next_y), 0) + \
-                    distance[(next_x, next_y)]
-                reachable_count[(next_x, next_y)] = \
-                    reachable_count.get((next_x, next_y), 0) + 1
+                queue.append((next_x, next_y))
+
+                if (next_x, next_y) not in reachable_count:
+                    distance_sum[(next_x, next_y)] = 0
+                    reachable_count[(next_x, next_y)] = 0
+                distance_sum[(next_x, next_y)] += distance[(next_x, next_y)]
+                reachable_count[(next_x, next_y)] += 1
 
     def is_valid(self, grid, x, y):
         n, m = len(grid), len(grid[0])
         if not (0 <= x < n and 0 <= y < m):
             return False
-        return grid[x][y] != GridType.WALL
+        return grid[x][y] == GridType.EMPTY

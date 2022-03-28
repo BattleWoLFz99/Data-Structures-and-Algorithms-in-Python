@@ -1,24 +1,9 @@
-"""
-Definition for a point.
-class Point:
-    def __init__(self, a=0, b=0):
-        self.x = a
-        self.y = b
-"""
-
-OFFSETS = [
-    (-2, -1), (-2, 1), (-1, 2), (1, 2),
-    (2, 1), (2, -1), (1, -2), (-1, -2),
-]
+OFFSETS = (
+    (1, 2), (1, -2), (-1, 2), (-1, -2),
+    (2, 1), (2, -1), (-2, 1), (-2, -1)
+)
 
 class Solution:
-        
-    """
-    @param grid: a chessboard included 0 (false) and 1 (true)
-    @param source: a point
-    @param destination: a point
-    @return: the shortest path 
-    """
     def shortestPath(self, grid, source, destination):
         if not grid or not grid[0]:
             return -1
@@ -51,6 +36,6 @@ class Solution:
             return False
         if grid[x][y] == 1:
             return False
-        if (x, y) in visited:
+        if (x, y) in dis_to_src_map:
             return False
         return True

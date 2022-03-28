@@ -101,28 +101,3 @@ class Solution:
                 while stack and stack[-1].right == node:
                     node = stack.pop()
         return results
-
-
-
-
-# 我也不知道这是个啥，先屯着吧草。
-
-class Solution:
-    """
-    @param root: A Tree
-    @return: Inorder in ArrayList which contains node values.
-    """
-    def inorderTraversal(self, root):
-        # write your code here
-        ans = []
-        stack = []
-        curr = root
-        while curr or stack:
-            if not curr:
-                curr = stack.pop(-1)
-                ans.append(curr.val)
-                curr = curr.right
-            else:
-                stack.append(curr)
-                curr = curr.left
-        return ans

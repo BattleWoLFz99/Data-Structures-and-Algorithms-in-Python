@@ -1,5 +1,4 @@
 # Try NOT to change the original input
-
 DIRECTIONS = [(1, 0), (0, -1), (-1, 0), (0, 1)]
 
 class Solution:
@@ -26,9 +25,9 @@ class Solution:
         while queue:
             # tuple 直接 pop
             x, y = queue.popleft()
-            for delta_x, delta_y in DIRECTIONS:
-                next_x = x + delta_x
-                next_y = y + delta_y
+            for dx, dy in DIRECTIONS:
+                next_x = x + dx
+                next_y = y + dy
                 if not self.is_valid(grid, next_x, next_y, visited):
                     continue
                 queue.append((next_x, next_y))
@@ -42,4 +41,3 @@ class Solution:
             return False
         # 写传统 if 放这里，上面会list out of range
         return grid[x][y]
-

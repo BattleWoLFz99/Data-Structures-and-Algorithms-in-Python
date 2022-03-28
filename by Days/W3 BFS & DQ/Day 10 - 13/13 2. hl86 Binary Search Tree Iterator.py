@@ -1,19 +1,11 @@
-# Can't go back....
-
+# Can't go back
 """
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-
 Example of iterate a tree:
 iterator = BSTIterator(root)
 while iterator.hasNext():
     node = iterator.next()
     do something for node 
 """
-
 
 class BSTIterator:
     """

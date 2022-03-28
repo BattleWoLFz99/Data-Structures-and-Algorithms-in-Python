@@ -1,4 +1,34 @@
-# For el376 Binary Tree Path Sum ver1
+# 为了降低出 BUG 几率，统一使用 if left if right
+class Solution:
+    """
+    @param root: the root of the binary tree
+    @return: all root-to-leaf paths
+    """
+    def binaryTreePaths(self, root):
+        if root is None:
+            return []
+            
+        result = []
+        self.dfs(root, [str(root.val)], result)
+        return result
+
+    def dfs(self, node, path, result):
+        if node.left is None and node.right is None:
+            result.append('->'.join(path))
+            return
+
+        if node.left:
+            path.append(str(node.left.val))
+            self.dfs(node.left, path, result)
+            path.pop()  # 回溯
+        
+        if node.right:
+            path.append(str(node.right.val))
+            self.dfs(node.right, path, result)
+            path.pop()
+
+
+# 暂时不看这个
 class Solution:
     """
     @param: root: the root of binary tree
@@ -30,96 +60,7 @@ class Solution:
         path.pop()
 
 
-# For el376 Binary Tree Path Sum ver2
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-"""
-
-class Solution:
-    """
-    @param root: the root of the binary tree
-    @return: all root-to-leaf paths
-    """
-    def binaryTreePaths(self, root):
-        if root is None:
-            return []
-            
-        result = []
-        self.dfs(root, [str(root.val)], result)
-        return result
-
-    def dfs(self, node, path, result):
-        if node.left is None and node.right is None:
-            result.append('->'.join(path))
-            return
-
-        if node.left:
-            path.append(str(node.left.val))
-            self.dfs(node.left, path, result)
-            path.pop()  # 回溯
-        
-        if node.right:
-            path.append(str(node.right.val))
-            self.dfs(node.right, path, result)
-            path.pop()
-
-# For beginners...
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-"""
-
-class Solution:
-    """
-    @param root: the root of the binary tree
-    @return: all root-to-leaf paths
-    """
-    def binaryTreePaths(self, root):
-        if not root:
-            return []
-        
-        paths = []
-        self.find_paths(root, [root], paths)
-        return paths
-    
-    def find_paths(self, node, path, paths):
-        if not node:
-            return
-        
-        if not node.left and not node.right:
-            paths.append('->'.join([str(n.val) for n in path]))
-            return
-            
-        path.append(node.left)
-        self.find_paths(node.left, path, paths)
-        path.pop()
-        
-        path.append(node.right)
-        self.find_paths(node.right, path, paths)
-        path.pop()
-
-
-# 先屯着看能不能抽
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-"""
-
-class Solution:
-    """
-    @param root: the root of the binary tree
-    @return: all root-to-leaf paths
-    """
+# 反面教材，不用DFS遍历法去求具体路径
     def binaryTreePaths(self, root):
         if root is None:
             return []

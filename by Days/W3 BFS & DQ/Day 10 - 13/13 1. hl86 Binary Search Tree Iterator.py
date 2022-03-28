@@ -1,21 +1,6 @@
 # 不仅仅是BST，任何二叉树都能这样中序遍历。建立在理解基础上背下来是最好的
 # 通用解法。 可以同时用于 find k values in the BST that are closest to the target.
 
-"""
-Definition of TreeNode:
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-
-Example of iterate a tree:
-iterator = BSTIterator(root)
-while iterator.hasNext():
-    node = iterator.next()
-    do something for node 
-"""
-
-
 class BSTIterator:
     """
     @param: root: The root of binary tree.

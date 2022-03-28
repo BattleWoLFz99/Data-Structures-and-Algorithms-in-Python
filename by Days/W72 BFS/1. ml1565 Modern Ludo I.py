@@ -170,3 +170,180 @@ class Solution:
         for from_node, to_node in connections:
             graph[from_node].add(to_node)
         return graph
+
+
+# 如果不是为了引出 SPFA 自己写不分层 BFS 的话，写起来还是特别简单的：
+class Solution:
+    """
+    @param length: the length of board
+    @param connections: the connections of the positions
+    @return: the minimum steps to reach the end
+    """
+    def modernLudo(self, length, connections):
+        graph = self.build_graph(length, connections)
+        queue = collections.deque([1])
+        distance = {1: 0}
+
+        while queue:
+            node = queue.popleft()
+            if node == length:
+                return distance[node]
+            for next_node in self.get_next_nodes(node, graph, distance, length):
+                if next_node in distance:
+                    continue
+                queue.append(next_node)
+                distance[next_node] = distance[node] + 1
+        
+        return distance[length]
+
+    def get_next_nodes(self, node, graph, distance, length):
+        queue = collections.deque()
+        next_nodes = set()
+        for i in range(1, 7):
+            next_node = node + i
+            if next_node > length:
+                continue
+            queue.append(next_node)
+            next_nodes.add(next_node)
+
+        while queue:
+            node = queue.popleft()
+            if node in distance:
+                continue
+            for neighbor in graph[node]:
+                if neighbor in distance:
+                    continue
+                next_nodes.add(neighbor)
+                queue.append(neighbor)
+        
+        return next_nodes
+
+    def build_graph(self, length, connections):
+        graph = {
+            i: set()
+            for i in range(1, length + 1)
+        }
+        for from_node, to_node in connections:
+            graph[from_node].add(to_node)
+
+        return graph
+
+
+# SPFA
+class Solution:
+    """
+    @param length: the length of board
+    @param connections: the connections of the positions
+    @return: the minimum steps to reach the end
+    """
+    def modernLudo(self, length, connections):
+        graph = self.build_graph(length, connections)
+        queue = collections.deque([1])
+        # 变动1：都改 inf
+        distance = {
+            i: float('inf')
+            for i in range(1, length + 1)
+        }
+        distance[1] = 0
+
+        while queue:
+            node = queue.popleft()
+            if node == length:
+                return distance[node]
+            # 变动2：如果可以直达的 next_node 没有变得更短，则 continue
+            for next_node in graph[node]:
+                # if next_node in distance and
+                if distance[node] + 0 >= distance[next_node]:
+                    continue
+                distance[next_node] = distance[node]
+                queue.append(next_node)
+            for next_node in self.get_next_nodes(node, length):
+                # 变动3：如果跳跃后没有变得更短，则 continue
+                # if next_node in distance and
+                if distance[node] + 1 >= distance[next_node]:
+                    continue
+                distance[next_node] = distance[node] + 1
+                queue.append(next_node)
+        
+        return distance[length]
+
+    def get_next_nodes(self, node, length):
+        next_nodes = set()
+        for i in range(1, 7):
+            next_node = node + i
+            if next_node > length:
+                continue
+            next_nodes.add(next_node)
+        
+        return next_nodes
+
+    def build_graph(self, length, connections):
+        graph = {
+            i: set()
+            for i in range(1, length + 1)
+        }
+        for from_node, to_node in connections:
+            graph[from_node].add(to_node)
+
+        return graph
+
+
+class Solution:
+    """
+    @param length: the length of board
+    @param connections: the connections of the positions
+    @return: the minimum steps to reach the end
+    """
+    def modernLudo(self, length, connections):
+        import heapq
+
+        graph = self.build_graph(length, connections)
+        
+        # 变动1：都改 inf，与改 queue 为 (步数，位置)
+        queue = [(0, 1)]
+        distance = {
+            i: float('inf')
+            for i in range(1, length + 1)
+        }
+        distance[1] = 0
+
+        while queue:
+            dist, node = heapq.heappop(queue)
+            # if node == length:
+                # return dist
+            # 统一模板，改成 如果以前已经有 next_node 在里面了，且这次比以前还要大，就不要放进去
+            for next_node in graph[node]:
+                # if next_node in distance and:
+                if dist + 0 >= distance[next_node]:
+                    continue
+                distance[next_node] = dist
+                heapq.heappush(queue, (dist, next_node))
+            for next_node in self.get_next_nodes(node, length):
+                # 变动3：如果跳跃后更短，则更新
+                # if next_node in distance and:
+                if dist + 1 >= distance[next_node]:
+                    continue
+                distance[next_node] = dist + 1
+                heapq.heappush(queue, (dist + 1, next_node))
+        
+        return distance[length]
+
+    def get_next_nodes(self, node, length):
+        next_nodes = set()
+        for i in range(1, 7):
+            next_node = node + i
+            if next_node > length:
+                continue
+            next_nodes.add(next_node)
+        
+        return next_nodes
+
+    def build_graph(self, length, connections):
+        graph = {
+            i: set()
+            for i in range(1, length + 1)
+        }
+        for from_node, to_node in connections:
+            graph[from_node].add(to_node)
+
+        return graph

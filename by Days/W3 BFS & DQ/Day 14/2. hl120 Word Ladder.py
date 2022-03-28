@@ -1,11 +1,5 @@
 # 不分层 直接 pop。需要用 dict
 class Solution:
-    """
-    @param: start: a string
-    @param: end: a string
-    @param: dict: a set of string
-    @return: An integer
-    """
     def ladderLength(self, start, end, dict):
         if not dict:
             return None
@@ -40,29 +34,22 @@ class Solution:
         return words
 
 
-# 分层，保留层次信息。可以用 set
-class Solution:
-    """
-    @param: start: a string
-    @param: end: a string
-    @param: dict: a set of string
-    @return: An integer
-    """
+# 分层，保留层次信息。分层的话统一模板，把判断 == end 扔到下面给 next
     def ladderLength(self, start, end, dict):
         dict.add(end)
         queue = collections.deque([start])
         visited = set([start])
-
-        distance = 0
+        # 找不到返回 0，一次变换返回2，所以这里初始化为 1
+        distance = 1
         while queue:
             distance += 1
             for _ in range(len(queue)):
                 word = queue.popleft()
-                if word == end:
-                    return distance
                 for next_word in self.get_next_words(word, dict):
                     if next_word in visited:
                         continue
+                    if next_word == end:
+                        return distance
                     queue.append(next_word)
                     visited.add(next_word)
 
@@ -79,3 +66,4 @@ class Solution:
                 if new_word in dict:
                     next_words.append(new_word)
         return next_words
+
