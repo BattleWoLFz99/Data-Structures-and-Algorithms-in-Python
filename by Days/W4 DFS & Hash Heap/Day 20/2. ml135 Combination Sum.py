@@ -9,7 +9,7 @@ class Solution:
 
         if not candidates:
             return [combinations]
-
+        # 没有重复元素则不需要去重，就不用 sort
         unique_sorted_numbers = sorted(list(set(candidates)))
         self.dfs(unique_sorted_numbers, 0, target, [], combinations)
         return combinations
@@ -23,7 +23,8 @@ class Solution:
             return
         
         if target == 0:
-            return combinations.append(list(combination))
+            combinations.append(list(combination))
+            return 
             
         # 递归的拆解：挑一个数放到 combination 里
         for i in range(index, len(unique_sorted_numbers)):

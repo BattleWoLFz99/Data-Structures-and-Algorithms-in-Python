@@ -1,62 +1,63 @@
-# start 也要输出，别上来就 [], results
-# 找最短的所有方案：BFS找最短，DFS找所有
-
+# end BFS 找可行拿去 DFS 剪枝
+# LeetCode 的写法，记得加 beginWord。。
+# 是到现在符合个人模板的写法，多了个 next_words_options 然后用 +1 判断多解
 class Solution:
-    """
-    @param: start: a string
-    @param: end: a string
-    @param: dict: a set of string
-    @return: a list of lists of string
-    """
-    def findLadders(self, start, end, d):
-        d.add(start)
-        d.add(end)
-
-        distance = {}
-        from_to_map = {}
-        for word in d:
-            from_to_map[word] = []
-        self.bfs(start, d, distance, from_to_map)
-
+    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+        if not beginWord or not endWord or not wordList:
+            return []
+        if beginWord == endWord:
+            return []
+        word_set = set(wordList)
+        if endWord not in word_set:
+            return []
+        
+        word_set.add(beginWord)
+        distance, next_words_options = self.bfs(beginWord, endWord, word_set)
         results = []
-        self.dfs(start, end, d, from_to_map, distance[end], [start], results)
-
+        self.dfs(beginWord, endWord, next_words_options, distance, [beginWord], results)
+        
         return results
-
-    def bfs(self, start, d, distance, from_to_map):
-        queue = collections.deque([start])
-        distance[start] = 0
+        
+    def bfs(self, beginWord, endWord, word_set):
+        from collections import defaultdict
+        distance = {}
+        distance[endWord] = 0
+        next_words_options = defaultdict(set)
+        queue = collections.deque([endWord])
         while queue:
-            curr_word = queue.popleft()
-            for next_word in self.get_next_words(curr_word, d):
+            word = queue.popleft()
+            if word == beginWord:
+                break
+            for next_word in self.get_next_words(word, word_set):
                 if next_word not in distance:
-                    distance[next_word] = distance[curr_word] + 1
-                    from_to_map[curr_word].append(next_word)
+                    next_words_options[next_word].add(word)
+                    distance[next_word] = distance[word] + 1
                     queue.append(next_word)
-                elif distance[next_word] == distance[curr_word] + 1:
-                    from_to_map[curr_word].append(next_word)
-
-    def get_next_words(self, word, d):
-        words = []
+                elif distance[next_word] == distance[word] + 1:
+                    next_words_options[next_word].add(word)
+                    
+        return distance, next_words_options
+    
+    def get_next_words(self, word, word_set):
+        next_words = []
         for i in range(len(word)):
-            for c in 'abcdefghijklmnopqrstuvwxyz':
-                if word[i] == c:
+            for c in "abcdefghijklmnopqrstuvwxyz":
+                if c == word[i]:
                     continue
-                next_word = word[:i] + c + word[i+1:]
-                if next_word in d:
-                    words.append(next_word)
-
-        return words
-
-    def dfs(self, curr_word, end, d, from_to_map, min_step, path, results):
-        if curr_word == end:
+                begin, end = word[:i], word[i + 1:]
+                next_word = begin + c + end
+                if next_word in word_set:
+                    next_words.append(next_word)
+                    
+        return next_words
+    
+    def dfs(self, curr_word, endWord, next_words_options, distance, path, results):
+        if curr_word == endWord:
             results.append(list(path))
-            return
-
-        if len(path) > min_step:
-            return
-
-        for next_word in from_to_map[curr_word]:
+            
+        for next_word in next_words_options[curr_word]:
+            if distance[next_word] != distance[curr_word] - 1:
+                continue
             path.append(next_word)
-            self.dfs(next_word, end, d, from_to_map, min_step, path, results)
+            self.dfs(next_word, endWord, next_words_options, distance, path, results)
             path.pop()

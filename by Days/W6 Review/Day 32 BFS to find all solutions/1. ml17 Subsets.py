@@ -39,3 +39,21 @@ class Solution:
                 queue.append(subset)
 
         return queue
+
+# More BFS:
+class Solution:
+    def subsets(self, nums):
+        results = []
+        if not nums:
+            return [results]
+        queue = collections.deque([[]])
+        while queue:
+            subset = queue.popleft()
+            print(subset)
+            results.append(list(subset))
+            for num in nums:
+                if not subset or subset[-1] < num:
+                    newSubset = list(subset)
+                    newSubset.append(num)
+                    queue.append(newSubset)
+        return results
