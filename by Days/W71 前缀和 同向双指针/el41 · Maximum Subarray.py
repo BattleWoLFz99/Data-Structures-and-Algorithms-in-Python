@@ -13,7 +13,7 @@ class Solution:
             return 0
 
         prefix_sum = self.get_prefix_sum(nums)
-        min_sum, max_sum = 0, -sys.maxsize
+        min_sum, max_sum = 0, float('inf')
         for end in range(len(nums)):
             max_sum = max(max_sum, prefix_sum[end + 1] - min_sum)
             min_sum = min(min_sum, prefix_sum[end + 1])
